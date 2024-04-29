@@ -1,1 +1,9 @@
+step 1- Splunk server need to be configured first so that the telemetry from defending and attacking machine can be recoreded. For that the dhcp has be set to 'No' and the static ip settings 
+has to be used that we assigned while making the diagram for the project and with it Dns server has been changed as well to 8.8.8.8 which belongs to google.
+step-2- I download splunk enterprise from the splunk website and afterwards i installed virtualbox-guest-additions-iso in the splunk server basically what is done that the splunk server has to insalled onto the server using the server command line.
+Step-3- In this step splunk forwarder and sysmon was downloaded on target machine and splunk was configured so that it can get the data of target pc and server as well. 
+Step-4- Now in the windows server change the ip of the server and than go to the server manager to install AD Domain services. Now we havr to add a new forest because we are creating new domain.
+Step-5- we have to log in windows aka target machine and make it join the domain of server, on the domain server i created two user accounts A and B. 
+Step-6- change the ip of attacker machine aka kali machine from dynamic to static. later i did a brute force attack using a tool 'Crowbar'. after installing this tool we will use rockyou.txt file which contains a lot of passwords  which can be used to brute force the target machine. for the attack to succed we need to open remote desktop protocol in target machine that way crowbar can be used to connect to target machine and use the rockyou.txt file to find the password of the users that were created in the server.
+Step-7- now that the attack has happened we go to splunk t view the log and in there event log is listed in which there is 20 login attempts shown. from here we can see eveything like where did the attack came from the nameof the attacker and the ip of thr attacker machine.
 
