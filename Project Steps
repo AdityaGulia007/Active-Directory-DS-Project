@@ -1,9 +1,30 @@
-step 1- Splunk server need to be configured first so that the telemetry from defending and attacking machine can be recoreded. For that the dhcp has be set to 'No' and the static ip settings 
-has to be used that we assigned while making the diagram for the project and with it Dns server has been changed as well to 8.8.8.8 which belongs to google.
-step-2- I download splunk enterprise from the splunk website and afterwards i installed virtualbox-guest-additions-iso in the splunk server basically what is done that the splunk server has to insalled onto the server using the server command line.
-Step-3- In this step splunk forwarder and sysmon was downloaded on target machine and splunk was configured so that it can get the data of target pc and server as well. 
-Step-4- Now in the windows server change the ip of the server and than go to the server manager to install AD Domain services. Now we havr to add a new forest because we are creating new domain.
-Step-5- we have to log in windows aka target machine and make it join the domain of server, on the domain server i created two user accounts A and B. 
-Step-6- change the ip of attacker machine aka kali machine from dynamic to static. later i did a brute force attack using a tool 'Crowbar'. after installing this tool we will use rockyou.txt file which contains a lot of passwords  which can be used to brute force the target machine. for the attack to succed we need to open remote desktop protocol in target machine that way crowbar can be used to connect to target machine and use the rockyou.txt file to find the password of the users that were created in the server.
-Step-7- now that the attack has happened we go to splunk t view the log and in there event log is listed in which there is 20 login attempts shown. from here we can see eveything like where did the attack came from the nameof the attacker and the ip of thr attacker machine.
+Brief Overview-
+This Project is Active Directory domain services where i will be trying to attack the Defender machine aka Windows OS from Attacker machine aka kali OS. For this i 
+have created a diagram which facilitates me to carry out this project with ease. All the Project screenshots has been added.
+
+Steps involved to complete the project-
+Step-1) As shown in the diagram i have to install all the OS, splunk server and active directiory. Afterwards i set all these up in my laptop which is fairly easy 
+process except setting up the splunk server.
+Step-2) In the diagram i have assigned each interface a static IP. For this i changed the settings in oracle virtal box by creating new NAT network by doing we are 
+keeping out project separate from Host machine.
+Step-3) I assigned a staic IP to each to everything other than Defender machine, sot that it is easier to remember which PC is which.
+Step-4) Splunk server need to be configured which is not so easy step. It is complex but it carry a lot of steps so the chances that make some mistakes increases 
+which creates probles. Now, the configuration is done so that we can use the splunk aplication to record the telemetry from defending and attacking machine. As shown
+in the diagram i have to assgin the static ip to the server by conigureing the 00-installer-config.yaml file .In this file dhcp has be set to 'No' and the static ip 
+settings has to be used than i assigned it with Dns server has been changed to 8.8.8.8 which belongs to google.
+step-5) I downloaded splunk enterprise from the splunk website and afterwards i installed virtualbox-guest-additions-iso in the splunk server basically what is done 
+that the splunk enterprise file has to installed onto the server using the server command line.
+Step-6) In this step splunk forwarder and sysmon are downloaded on target machine and splunk was configured so that it can get the data of target machine and server 
+as well. 
+Step-7) Now in the windows server change the ip of the server and install the AD Domain services. I have to add a new forest because i have created a new domain.
+Step-8) I have to log in windows aka target machine and make it join the domain of server by addinf the server ip in the DNS of Target machine, on the domain server 
+i created two user accounts A and B. 
+Step-9) Change the IP of attacker machine aka kali machine from dynamic to static. Later i did a brute force attack using a tool 'Crowbar'. After installing this 
+tool we will use rockyou.txt file which contains a lot of passwords which can be used to brute force to get the password of the target machine. For the attack to 
+succed we need to open remote desktop protocol in target machine that way crowbar can be used to connect to target machine and use the rockyou.txt file to find the 
+password of the users that were created on the server. By the way i added the passoword of the Target machine in the rockyou.txt file because my password was not in
+txt file.
+Step-10) Now using the crowbar tool i carried out the attack and with 2 seconds it found the password for my target machine using the RDP becasue this port was open.
+we go to splunk application to view the log and in there the event logs are listed in which there is 20 login attempts shown. From here we can see eveything like 
+where did the attack came from the nameof the attacker and the ip of thr attacker machine.
 
